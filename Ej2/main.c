@@ -9,15 +9,41 @@ int es_identidad(int m[SIZE][SIZE]);
 int tiene_fila_completa(int m[SIZE][SIZE]);
 int tiene_columna_completa(int m[SIZE][SIZE]);
 
+void imprimir_resultados(int m[SIZE][SIZE]);
+
 int main(void) {
     int m[SIZE][SIZE] = {
         {1, 0, 0, 0},
-        {0, 1, 1, 0},
+        {0, 1, 0, 0},
         {0, 0, 1, 0},
         {0, 0, 0, 1}
     };
-    printf("%d\n", es_identidad(m));
+    printf("Matriz ingresada: \n");
+    imprimir_resultados(m);
+
+    
     return 0;
+}
+
+void imprimir_resultados(int m[SIZE][SIZE]){
+    for(int i = 0; i < SIZE; i++){
+        for(int j = 0; j < SIZE; j++){
+            printf("%d ", m[i][j]);
+        }
+        printf("\n");
+    }
+
+    printf("Es matris identidad: ");
+    if(es_identidad(m)) printf("Si\n");
+    else printf("No\n");
+
+    printf("Tiene fila completa de unos: ");
+    if(tiene_fila_completa(m)) printf("Si\n");
+    else printf("No\n");
+
+    printf("Tiene columna completa de unos: ");
+    if(tiene_columna_completa(m)) printf("Si\n");
+    else printf("No\n");
 }
 
 int es_identidad(int m[SIZE][SIZE]){
@@ -29,7 +55,6 @@ int es_identidad(int m[SIZE][SIZE]){
     }    
     return 1;
 }
-
 
 
 int tiene_columna_completa(int m[SIZE][SIZE]){
