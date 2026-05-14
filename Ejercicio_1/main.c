@@ -11,9 +11,33 @@ int potencia(int base, int exp) {
     return resultado;
 }
 
+int es_par(int resultado){
+    if(resultado%2 == 0) return 1;
+    return 0;
+}
+
 int main(void) {
-    printf("2^8 = %d\n", potencia(2, 8));
-    printf("3^4 = %d\n", potencia(3, 4));
+    int base = 0;
+    int exp = 0;
+
+    do{
+        printf("Ingrese el valor de la base: ");
+        scanf("%d", &base);
+        if (base == 0) continue;   
+        printf("Ingrese el valor del exponente: ");
+        scanf("%d", &exp);
+        if(exp < 0) continue;   
+        break; 
+    }while(1);
+
+    int resultado = potencia(base, exp);
+
+    printf("%d^%d = %d\n",base, exp, resultado);
+
+    printf("El resultado es:");
+    if(es_par(resultado)) printf("Par\n");
+    else printf("Impar\n");
+
 
     return 0;
 }
