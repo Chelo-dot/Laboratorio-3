@@ -22,11 +22,23 @@ int main(void) {
     return 0;
 }
 
+int tiene_columna_completa(int m[SIZE][SIZE]){
+    for(int i = 0; i < SIZE; i++){
+        if(contar_unos_columna(m, i) == SIZE) return 1;
+    }
+    return 0;
+}
 
+int tiene_fila_completa(int m[SIZE][SIZE]){
+    for(int i = 0; i < SIZE; i++){
+        if(contar_unos_fila(m, i) == SIZE) return 1;
+    }
+    return 0;
+}
 
 int contar_unos_columna(int m[SIZE][SIZE], int col){
     int contador = 0;
-    for(int i = 1; i < SIZE; i++){
+    for(int i = 0; i < SIZE; i++){
         if(m[i][col] == 1) contador ++;
     }
 
@@ -35,7 +47,7 @@ int contar_unos_columna(int m[SIZE][SIZE], int col){
 
 int contar_unos_fila(int m[SIZE][SIZE], int fila){
     int contador = 0;
-    for(int i = 1; i < SIZE; i++){
+    for(int i = 0; i < SIZE; i++){
         if(m[fila][i] == 1) contador ++;
     }
 
