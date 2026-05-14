@@ -12,21 +12,31 @@ int tiene_columna_completa(int m[SIZE][SIZE]);
 int main(void) {
     int m[SIZE][SIZE] = {
         {1, 0, 0, 0},
-        {0, 1, 1, 0},
+        {0, 1, 0, 0},
         {0, 0, 1, 0},
         {0, 0, 0, 1}
     };
 
-    printf("%d\n",contar_unos_fila(m, 2));
+
 
     return 0;
 }
 
 
+
+int contar_unos_columna(int m[SIZE][SIZE], int col){
+    int contador = 0;
+    for(int i = 1; i < SIZE; i++){
+        if(m[i][col] == 1) contador ++;
+    }
+
+    return contador; 
+}
+
 int contar_unos_fila(int m[SIZE][SIZE], int fila){
     int contador = 0;
     for(int i = 1; i < SIZE; i++){
-        if(m[fila-1][i] == 1) contador ++;
+        if(m[fila][i] == 1) contador ++;
     }
 
     return contador;
