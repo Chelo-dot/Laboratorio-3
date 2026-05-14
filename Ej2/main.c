@@ -12,6 +12,9 @@ int tiene_columna_completa(int m[SIZE][SIZE]);
 void imprimir_resultados(int m[SIZE][SIZE]);
 
 int main(void) {
+
+    srand(time(NULL));
+
     int m[SIZE][SIZE] = {
         {1, 0, 0, 0},
         {0, 1, 0, 0},
@@ -21,6 +24,17 @@ int main(void) {
     printf("Matriz ingresada: \n");
     imprimir_resultados(m);
 
+    // General matriz random
+
+    int n[SIZE][SIZE] = {0};
+
+    for(int i = 0; i < SIZE; i ++){
+        for(int j = 0; j < SIZE; j++){
+            n[i][j] = rand()%2;
+        }
+    }
+
+    imprimir_resultados(n);
     
     return 0;
 }
