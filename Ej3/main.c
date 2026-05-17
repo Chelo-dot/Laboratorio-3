@@ -59,3 +59,11 @@ int lectura_extrema(Lectura s[], int n){
     printf("---Lectura Extrema---\nid: %d\nvalor %.1f\n", s[in].id, s[in].valor);
     return in;
 }
+
+int contar_estado(Lectura s[], int n, EstadosSensor e){
+    int contador = 0;
+    for(int i = 0; i < n; i ++){
+        if(s[i].estado == e) contador ++;
+    }
+    return contador;
+}
