@@ -15,13 +15,16 @@ int contar_estado(Lectura s[], int n, EstadosSensor e);
 int lectura_extrema(Lectura s[], int n);
 
 int main(void){
+    Lectura s[MAX_SENSORES]; // crea lista de sensores
+    
+    int n; // numero de elementos
+    do{
+        printf("Ingrese el número de sensores a ingresar (MAX 10):\n");
+        scanf("%d", &n);
+    } while (n >= 0 && n <= MAX_SENSORES);
 
 
     // Lectura de sensores
-    Lectura s[MAX_SENSORES];
-    int n;
-    printf("Ingrese el número de sensores a ingresar (MAX 10):\n");
-    scanf("%d", &n);
     int id = 0;
     float valor = 0;
     for(int i = 0; i < n; i++){
@@ -34,8 +37,22 @@ int main(void){
         s[i].estado = clasificar(valor);
     }
 
-    int in = lectura_extrema(s, n);
+    // Imprimir tabla 
+    printf("Sensor |  id  | valor | estado\n");
+    for(int i = 0; i < n; i++){
+        printf("   %d   | %d  |  %.1f | %d\n", i+1, s[i].id, s[i].valor, s[i].estado);
+    }
 
+    //Imprimir contados de cada estado
+    printf("NORMAL | ALERTA | FALLO\n");
+    printf("   %d   |", contar_estado(s, n, NORMAL));
+    printf("   %d    |", contar_estado(s, n, ALERTA));
+    printf("   %d\n", contar_estado(s, n, FALLO));
+
+
+    int in = lectura_extrema(s, n);
+    printf("---Lectura Extrema---\nid: %d\nvalor %.1f\n", s[in].id, s[in].valor);
+    
 
     return 0;
 }
@@ -56,7 +73,6 @@ int lectura_extrema(Lectura s[], int n){
             in = i; 
         }
     }
-    printf("---Lectura Extrema---\nid: %d\nvalor %.1f\n", s[in].id, s[in].valor);
     return in;
 }
 
@@ -67,3 +83,4 @@ int contar_estado(Lectura s[], int n, EstadosSensor e){
     }
     return contador;
 }
+
