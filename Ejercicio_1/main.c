@@ -23,10 +23,16 @@ int main(void) {
     do{
         printf("Ingrese el valor de la base: ");
         scanf("%d", &base);
-        if (base == 0) continue;   
+        if (base == 0){
+            printf("Error: la base debe ser diferente a 0\n");
+            continue;  
+        }  
         printf("Ingrese el valor del exponente: ");
         scanf("%d", &exp);
-        if(exp < 0) continue;   
+        if(exp < 0){
+            printf("Error: el exponente no puede ser negativo\n");
+            continue;
+        }
         break; 
     }while(1);
 
